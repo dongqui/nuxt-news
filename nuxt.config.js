@@ -36,7 +36,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/vue-material' }
+    { src: '~/plugins/vue-material' },
+    { src: '~/plugins/axios' }
   ],
 
   /*
@@ -50,7 +51,12 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
+    credential: true,
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  env: {
+    NEWS_API_KEY: '5d70515f0b814bdc959c928619efb8f0'
   },
 
   /*
