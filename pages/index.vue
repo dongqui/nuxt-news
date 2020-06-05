@@ -39,11 +39,20 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 export default {
-  async asyncData({ app }) {
-    const topHeadLines = await app.$axios.$get('https://newsapi.org/v2/top-headlines?country=us');
-
-    return { headLines: topHeadLines.articles }
+  created() {
+    this.fetchHeadLines();
+  },
+  computed: {
+    ...mapState({
+      headLines: state => state.headLines.headLines,
+    })
+  },
+  methods: {
+    ...mapActions({
+      fetchHeadLines: 'headLines/fetchHeadLines'
+    })
   }
 }
 </script>
